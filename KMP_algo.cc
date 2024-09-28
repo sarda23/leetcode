@@ -60,12 +60,15 @@ class Solution
                 }
                 
                 if (j==m){
-                    result.push_back(i-m+1); // 1 based indexing
-                    j = LPS[j-1]; 
+                    // j toh out of bound ho gaya toh j ko piche bej do - kaha bejoge - apne se piche wale character se pucho 
+                    result.push_back(i-j+1); // 1 based indexing
+                    j = LPS[j-1]; // j-1 wale se puchenge ki bhai kaha jana hai
                 }else if(i<n && txt[i] != pat[j]){
                     if(j!=0){
+                        // j ko pura starting me nahi bejna hai 
                         j=LPS[j-1];
-                    } else{
+                    } 
+                    else{ // j==0 - toh i ko aage badha do 
                         i++;
                     }
                 }
