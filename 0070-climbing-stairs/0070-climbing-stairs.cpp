@@ -25,17 +25,17 @@ public:
             return n;
         }
 
-        vector<int> t(n+1);
-
-        t[0] = 0;
-        t[1] = 1;
-        t[2] = 2;
-
+        int a = 1; // i-2
+        int b = 2; // i-1
+        int c = 3; // i
+        // i ko nikal ne ke lia - u only need i-1 and i-2
         for(int i=3;i<=n;++i){
-            t[i] = t[i-1] + t[i-2];
+            c= b + a;
+            a = b;
+            b = c;
         }
 
-        return t[n];
+        return c;
 
         // memset(t,-1,sizeof(t));
         // return solve(n);
