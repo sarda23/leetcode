@@ -13,61 +13,39 @@ class Solution {
 public:
     TreeNode* replaceValueInTree(TreeNode* root) {
         if(!root){
-            return root; // kuch hai hi nahi toh kya kroge
+            return root;
         }
+
         queue<TreeNode*> q;
         q.push(root);
-        vector<int> level_sum;
+        int level_sum = root->val;
 
         while(!q.empty()){
-            int curr_level_sum = 0;
             int n = q.size();
+            int next_level_sum = 0;
 
             while(n--){
                 TreeNode* curr = q.front();
                 q.pop();
-                curr_level_sum += curr->val;
+
+                curr->val = level_sum - curr->val;
+
+                int sibling_sum = (curr->left != NULL ? curr->left->val : 0);
+                sibling_sum += (curr->right != NULL ? curr->right->val : 0);
+
                 if(curr->left){
+                    next_level_sum += curr->left->val;
+                    curr->left->val = sibling_sum;
                     q.push(curr->left);
                 }
                 if(curr->right){
+                    next_level_sum += curr->right->val;
+                    curr->right->val = sibling_sum;
                     q.push(curr->right);
                 }
             }
-            level_sum.push_back(curr_level_sum);
+            level_sum = next_level_sum;
         }
-
-        // step -2 
-        q.push(root);
-        root->val = 0;  // root has no cousin
-        
-        int idx = 1; // index 0 pe toh root hai - just niche wale se start karna hai
-
-        while(!q.empty()){
-            int n = q.size(); // current level me kitne nodes hai
-
-            while(n--){ // saare nodes ko process karna hai
-                TreeNode* curr = q.front();
-                q.pop();
-
-                // level_sum of curr_level - sibling_sum
-                int sibling_sum = curr->left != NULL ? curr->left->val : 0;
-                sibling_sum += curr->right!=NULL ? curr->right->val : 0;
-
-                // curr_level_sum
-
-                if(curr->left){
-                    curr->left->val = level_sum[idx] - sibling_sum;
-                    q.push(curr->left);
-                }
-                if(curr->right){
-                    curr->right->val = level_sum[idx] - sibling_sum;
-                    q.push(curr->right);
-                }
-            }
-            idx++;
-        }
-        
         return root;
     }
 };
