@@ -12,14 +12,9 @@
 class Solution {
 public:
     bool flipEquiv(TreeNode* root1, TreeNode* root2) {
-        // flip kar ke check kar lo -- without flip kar ke check kar lo agar same aata hai toh matlab flipequiv hai - and agar root ka value if diff hai toh matlab hi nahi hai aage/niche check karne ka
-        // base case - dono root null hai - toh toh true hai
-        // base case - agar ek null hai(num of nodes hi equal hi nahi hai)- false
-
         if(!root1 && !root2){
             return true;
         }
-
         if(!root1 || !root2){
             return false;
         }
