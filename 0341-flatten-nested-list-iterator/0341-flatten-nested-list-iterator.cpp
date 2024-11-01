@@ -16,6 +16,46 @@
  * };
  */
 
+// 3rd approach -
+// the NestedIterator is only for initialization and hasNext and next are the function which are called multiple times so we can do most of the work during initialization 
+
+class NestedIterator {
+public:
+    queue<int> q;
+
+    void Flatten(vector<NestedInteger> &nestedList){
+        int n = nestedList.size();
+
+        for(int i =0;i<n;i++){
+            NestedInteger& obj = nestedList[i];
+            if(obj.isInteger()){
+                q.push(obj.getInteger());
+            }
+            else{
+                Flatten(obj.getList());
+            }
+        }
+    }
+
+    NestedIterator(vector<NestedInteger> &nestedList) {
+       Flatten(nestedList);
+    }
+    
+    int next() {
+      int num = q.front();
+      q.pop();
+      return num;
+    }
+    
+    bool hasNext() {
+         if(q.empty()){
+            return false;
+         }
+         return true;
+    }
+};
+
+/*
 // 2nd method 
 // in stack no need to put all the objects instead we can put the address of objects
 // to access pointer things   use  ->   instead of . operator
@@ -60,6 +100,8 @@ public:
         return false;
     }
 };
+*/
+
 
 // 1st method
 /*
