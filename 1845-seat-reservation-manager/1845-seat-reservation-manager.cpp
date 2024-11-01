@@ -1,16 +1,20 @@
 class SeatManager {
 public:
     priority_queue<int,vector<int>,greater<int>> pq;
-
+    int seatMarker; // smallest unerserved seat ko mark karke rekhega
     SeatManager(int n) {
-        for(int i=1;i<=n;i++){ // n
-            pq.push(i); // log(n)
-        }    
+        seatMarker = 1;
     }
     
     int reserve() {
-        int seat = pq.top();
-        pq.pop();
+        if(!pq.empty()){
+            int seat = pq.top();
+            pq.pop();
+            return seat;
+        }
+
+        int seat = seatMarker; 
+        seatMarker++;
         return seat;
     }
     
