@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/design-circular-deque/?envType=daily-question&envId=2024-09-28">641. Design Circular Deque</a></h2><h3>Medium</h3><hr><p>Design your implementation of the circular double-ended queue (deque).</p>
+<h2><a href="https://leetcode.com/problems/design-circular-deque/">641. Design Circular Deque</a></h2><h3>Medium</h3><hr><p>Design your implementation of the circular double-ended queue (deque).</p>
 
 <p>Implement the <code>MyCircularDeque</code> class:</p>
 
