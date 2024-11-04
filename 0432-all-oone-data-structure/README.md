@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/all-oone-data-structure/?envType=daily-question&envId=2024-09-29">432. All O`one Data Structure</a></h2><h3>Hard</h3><hr><p>Design a data structure to store the strings&#39; count with the ability to return the strings with minimum and maximum counts.</p>
+<h2><a href="https://leetcode.com/problems/all-oone-data-structure/">432. All O`one Data Structure</a></h2><h3>Hard</h3><hr><p>Design a data structure to store the strings&#39; count with the ability to return the strings with minimum and maximum counts.</p>
 
 <p>Implement the <code>AllOne</code> class:</p>
 
