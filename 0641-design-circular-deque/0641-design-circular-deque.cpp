@@ -1,26 +1,28 @@
-// can use some data structure  -  here using vector
 class MyCircularDeque {
 public:
+    vector<int> deq;
     int K; // total capacity
-    vector<int>deq;
     int front;
-    int last;
-    int current_count;
-    // initialize
+    int rear;
+    int current_count; // currently kitne num of element
+
+    // u can also list STL (list works as DLL in c++)
+    // list.push_front()
+    // list.push_back()
+
     MyCircularDeque(int k) {
         K = k;
         deq = vector<int>(K,0);
         front = 0;
-        last = K-1;
-        current_count = 0;    
+        rear = K-1; 
+        current_count = 0; // abhi koi element nahi hai   
     }
     
     bool insertFront(int value) {
         if(isFull()){
             return false;
         }
-
-        front = (front - 1 + K) %K;
+        front = (front-1+K)%K;
         deq[front] = value;
         current_count++;
         return true;
@@ -30,9 +32,8 @@ public:
         if(isFull()){
             return false;
         }
-
-        last = (last + 1)%K;
-        deq[last] = value;
+        rear = (rear + 1)%K;
+        deq[rear] = value;
         current_count++;
         return true;
     }
@@ -41,7 +42,6 @@ public:
         if(isEmpty()){
             return false;
         }
-        // only updating the pointer is sufficient
         front = (front+1)%K;
         current_count--;
         return true;
@@ -51,8 +51,7 @@ public:
         if(isEmpty()){
             return false;
         }
-
-        last = (last - 1 + K)% K;
+        rear =(rear-1+K)%K;
         current_count--;
         return true;
     }
@@ -65,10 +64,11 @@ public:
     }
     
     int getRear() {
+        // last wala element
         if(isEmpty()){
             return -1;
         }
-        return deq[last];
+        return deq[rear];
     }
     
     bool isEmpty() {
