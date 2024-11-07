@@ -23,8 +23,7 @@ public:
         ListNode* temp = Head;
 
         while(temp){
-
-            if(rand() % count < 1.0/count){ // k/count
+            if(rand() % count ==0){ // k/count
                 result = temp->val;
             }
             count++;
