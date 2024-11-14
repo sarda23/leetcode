@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/project-employees-i/?envType=study-plan-v2&envId=top-sql-50">1075. Project Employees I</a></h2><h3>Easy</h3><hr><p>Table: <code>Project</code></p>
+<h2><a href="https://leetcode.com/problems/project-employees-i/description/">1075. Project Employees I</a></h2><h3>Easy</h3><hr><p>Table: <code>Project</code></p>
 
 <pre>
 +-------------+---------+
