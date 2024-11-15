@@ -13,26 +13,27 @@
 class Solution {
 public:
     int min_diff = INT_MAX;
-
-    void inorder(TreeNode* root, TreeNode* &prev){
+    TreeNode* prev;
+    void inorder(TreeNode* root){
         if(root == NULL){
             return;
         }
-        inorder(root->left,prev);
+        inorder(root->left);
 
         if(prev != NULL){
             min_diff = min(min_diff, root->val-prev->val);
+            cout<<min_diff<<endl;
         }
 
-        prev = root;
+        prev = root; // right jane se pehele prev ko root kar do 
 
-        inorder(root->right,prev);
+        inorder(root->right);
     }
 
     int getMinimumDifference(TreeNode* root) {
-        TreeNode* prev = NULL;
+        prev = NULL;
 
-        inorder(root,prev);
+        inorder(root);
 
         return min_diff;
     }
