@@ -1,28 +1,30 @@
 class Solution {
 public:
     long long maxMatrixSum(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
+        int n = matrix.size();
+        int m = matrix[0].size();
 
+        int count_neg = 0;
         long long sum = 0;
-        int countNegatives = 0; 
-        int smallestAbsoluteValue = INT_MAX;
 
-        for(int i = 0; i < m; i++) {
-            for(int j = 0; j < n; j++) {
+        int max_num = INT_MIN;
+        int min_num = INT_MAX;
+
+        for(int i=0;i<n;i++){
+            for(int j =0;j<m;j++){
+                max_num = max(max_num,abs(matrix[i][j]));
+                min_num = min(min_num,abs(matrix[i][j]));
                 sum += abs(matrix[i][j]);
-
-                countNegatives += matrix[i][j] < 0 ? 1 : 0;
-
-                smallestAbsoluteValue = min(smallestAbsoluteValue, abs(matrix[i][j]));
-
+                if(matrix[i][j]<0){
+                    count_neg++;
+                }
             }
         }
 
-        if(countNegatives%2 == 0) {
+        if(count_neg%2==0){
             return sum;
         }
 
-        return sum - 2*smallestAbsoluteValue;
+        return sum - 2*min_num;
     }
 };
