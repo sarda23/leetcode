@@ -1,0 +1,38 @@
+/*     Scroll below to see JAVA code also    */
+/*
+    MY YOUTUBE VIDEO FOR THIS Qn  : https://www.youtube.com/watch?v=Iwmn-gFL3c0
+    Company Tags                  : Google
+    Leetcode Link                 : https://leetcode.com/problems/domino-and-tromino-tiling/
+*/
+
+//NOTE : See the YouTube video above for the easiest explanation and intuition
+
+/****************************************************************** C++ ****************************************************/
+//Approach-1 (Recur + Memo)
+//T.C : O(n)
+//S.C : O(n)
+class Solution {
+public:
+    int M = 1000000007;
+    int t[1001];
+    int solve(int n) {
+         if(n == 1 || n == 2)
+            return n;
+        if(n == 3)
+            return 5;
+        
+        if(t[n] != -1)
+            return t[n];
+        
+        return t[n] = (2*solve(n-1)%M + solve(n-3)%M)%M;
+    }
+    
+    int numTilings(int n) {
+       
+        memset(t, -1, sizeof(t));
+        
+        
+        return solve(n);
+        
+    }
+};
